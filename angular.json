@@ -27,12 +27,15 @@
               "src/assets"
             ],
             "styles": [
-              "../DatingApp.SPA/node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "../DatingApp.SPA/node_modules/font-awesome/css/font-awesome.min.css",
+              "src/assets/vendors/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css",
               "src/styles.css"
 
             ],
-            "scripts": []
+            "scripts": [
+             "src/assets/vendors/jquery/dist/jquery.min.js",
+             "src/assets/vendors/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {

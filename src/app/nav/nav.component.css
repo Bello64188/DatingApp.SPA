@@ -1,0 +1,12 @@
+.container{
+   display: inline-block;
+}
+#setform{
+    margin: 3px;
+}
+.nav{
+    color: white;
+    font-size: 20px;
+    display: inline;
+    text-decoration: none;
+}
