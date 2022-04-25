@@ -1,0 +1,16 @@
+<div class=" text-center">
+  <h1 class="card-header">
+    Find Your Match!
+  </h1>
+  <div class="">
+    <p class="card-text">Come on to view your match... All you need to do just signin here...</p>
+    <a href="#"(click)="registerToggle()" class="btn btn-primary btn-sm">Register</a>
+    <a href="#" class="btn btn-primary btn-sm " style="margin-left: 3px;">Learn More</a>
+  </div>
+
+  <div class="container text-center" style="width: 45%;">
+<div *ngIf="registerMode" >
+  <app-register></app-register>
+</div>
+  </div>
+</div>

@@ -22,15 +22,31 @@ model={
   constructor(private authservice:AuthService ) { }
 
   ngOnInit(): void {
+    
   }
 login(form:NgForm){
- return this.authservice.Login(form.value).subscribe((res:any)=>{
-   localStorage.setItem("token",res.token);
-   console.log("login successfull");
-   
-   
- },
- );
- 
+  
+    return this.authservice.Login(form.value).subscribe((res:any)=>{
+      localStorage.setItem("token",res.token);
+      console.log("login successfully");  
+      
+    },
+    (err:any)=>{
+      
+        console.log("login Failed");
+      
+    }
+    
+    );
+
+}
+logout(){
+  localStorage.removeItem("token");
+  console.log("Logged out Successfully");
+  
+}
+loggedIn(){
+const token = localStorage.getItem("token");
+return !!token;
 }
 }

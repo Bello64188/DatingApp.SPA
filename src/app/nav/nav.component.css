@@ -6,7 +6,10 @@
 }
 .nav{
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     display: inline;
     text-decoration: none;
+}
+#navbar{
+    display: inline;
 }

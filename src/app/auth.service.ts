@@ -9,15 +9,18 @@ export class AuthService {
   private headers:HttpHeaders
 
 
- private accessUrl : string = "https://localhost:5001/api/account/login"
+ private loginUrl : string = "https://localhost:5001/api/account/login"
+ private registerUrl : string = "https://localhost:5001/api/account/register"
 
 
-  constructor( private http:HttpClient) {  
-    this.headers= new HttpHeaders({'Content-type':'application/json; charset=utf-8'})
-    
+  constructor( private http:HttpClient) {
+    this.headers= new HttpHeaders({'content-type':'application/json; charset=utf-8'})
+
    }
   Login(formData:any){
-  return this.http.post(this.accessUrl,formData);
+  return this.http.post(this.loginUrl,formData);
   };
-  
+  Register(UserData:any){
+    return this.http.post(this.registerUrl,UserData);
+  }
 }

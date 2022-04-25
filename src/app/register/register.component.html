@@ -1,0 +1,19 @@
+<form #form="ngForm" (submit)="register(form)">
+  <h1 class="text-center">Sign Up</h1>
+  <div class="form-group">
+
+    <input type="email" class="form-control " name="Email" placeholder="Enter email" [(ngModel)]="User.Email"><br>
+
+    <input type="password" class="form-control" name="Password" placeholder="Enter password" [(ngModel)]="User.Password"><br>
+    <input type="text" class="form-control" name="FirstName" placeholder="Enter FirstName" [(ngModel)]="User.FirstName" ><br>
+    <input type="text" class="form-control" name="LastName" placeholder="Enter LastName" [(ngModel)]="User.LastName"><br>
+    <input type="text" class="form-control" name="PhoneNumber" placeholder="Enter PhoneNumber" [(ngModel)]="User.PhoneNumber"><br>
+     <!-- <select name="Roles" class="form-control" [(ngModel)]="User.Roles">
+      <option [(ngModel)]="User.Roles" >User</option>
+      <option [(ngModel)]="User.Roles" >Administrator</option>
+    </select> -->
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit"(click)="cancel()" class="btn btn-danger">Cancel</button>
+</form>
