@@ -29,12 +29,16 @@
             "styles": [
               "src/assets/vendors/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css",
+              "src/assets/vendors/iconfonts/alertifyjs/build/css/alertify.min.css",
+              "src/assets/vendors/iconfonts/alertifyjs/build/css/themes/bootstrap.min.css",
+              "src/assets/vendors/iconfonts/bootswatch/dist/united/bootstrap.min.css",
               "src/styles.css"
 
             ],
             "scripts": [
              "src/assets/vendors/jquery/dist/jquery.min.js",
-             "src/assets/vendors/bootstrap/dist/js/bootstrap.min.js"
+             "src/assets/vendors/bootstrap/dist/js/bootstrap.min.js",
+             "src/assets/vendors/iconfonts/alertifyjs/build/alertify.min.js"
             ]
           },
           "configurations": {

@@ -13,3 +13,9 @@
 #navbar{
     display: inline;
 }
+.dropdown-menu li{
+  cursor: pointer;
+}
+.nav-link{
+  cursor: pointer;
+}
