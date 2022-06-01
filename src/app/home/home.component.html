@@ -2,9 +2,9 @@
   <h1 class="card-header">
     Find Your Match!
   </h1>
-  <div class="">
+  <div class="match">
     <p class="card-text">Come on to view your match... All you need to do just signin here...</p>
-    <a href="#"(click)="registerToggle()" class="btn btn-primary">Register</a>
+    <a [routerLink]="['/register']" (click)="registerToggle()" class="btn btn-primary">Register</a>
     <a href="#" class="btn btn-primary  " style="margin-left: 3px;">Learn More</a>
   </div>
 

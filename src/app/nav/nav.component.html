@@ -7,17 +7,17 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand mt-3" href="#"  style="font-size: 20px; font-weight: bold;">Dating App</a>
+        <a class="navbar-brand mt-3" [routerLink]="['/home']" routerLinkActive="router-link-active"   style="font-size: 20px; font-weight: bold;">Dating App</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse" >
           <ul class="nav navbar-nav" *ngIf="isUserAuth()">
-                <li ><a href="#" style="text-decoration: none;">Matches</a></li>
-                <li><a href="#" style="text-decoration: none;">Lists</a></li>
-                <li><a href="#" style="text-decoration: none;">Messages</a></li>
+                <li ><a [routerLink]="['/members']" routerLinkActive="router-link-active"  style="text-decoration: none;">Matches</a></li>
+                <li><a  [routerLink]="['/lists']" routerLinkActive="router-link-active"  style="text-decoration: none;">Lists</a></li>
+                <li><a [routerLink]="['/messages']" routerLinkActive="router-link-active"  style="text-decoration: none;">Messages</a></li>
           </ul>
 
 
-        <form *ngIf="!isUserAuth()" #form="ngForm" class="navbar-form navbar-right" (submit) ="login(form)" >
+        <form *ngIf="!isUserAuth()" #form="ngForm" class="navbar-form navbar-right" (submit) ="Login()" >
           <div class="form-group">
             <input id="setform" type="text" placeholder="Email" class="form-control"
              style="font-size: 18px;" #Email="ngModel" required name="Email" [(ngModel)]="model.Email" >
@@ -31,16 +31,17 @@
 
         <ul *ngIf="isUserAuth()" class="nav navbar-nav navbar-right">
           <li class="nav-item ">
-            <a class="nav-link " (click)="logout()">Logout</a>
+            <!-- <a class="nav-link " (click)="logout()">Logout</a> -->
           </li>
           <li class="nav-item dropdown" dropdown>
-            <a class="nav-link " dropdownToggle>Welcome User<span class="caret"></span></a>
+            <a class=" " dropdownToggle> Welcome {{authservice.decodeToken?.name}}<span class="caret"></span></a>
             <ul class="dropdown-menu" *dropdownMenu>
-              <li><a class="dropdown-item " href="#"><i class="fa fa-user-md" aria-hidden="true"></i>Edit Profile</a></li>
+              <li><a class="dropdown-item " [routerLink]="['/member/edit']">
+                <i class="fa fa-user-md" aria-hidden="true"></i>Edit Profile</a></li>
               <li class="divider dropdown-divider"></li>
               <li><a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i>Logout</a></li>
-              <li class="divider dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Separated link</a></li>
+
+
 
               </ul>
           </li>
