@@ -11,6 +11,7 @@ import { ListComponent } from "./list/list.component";
 import { MemberListComponent } from "./members/member-list/member-list.component";
 import { MessagesComponent } from './messages/messages.component';
 import { AuthGuard } from "./_guard/auth.guard";
+import { PreventUnsavedChandesGuard } from './_guard/prevent-unsaved-chandes.guard';
 
 export const appRoute : Routes=[
 {path:'home',component: HomeComponent},
@@ -22,7 +23,8 @@ export const appRoute : Routes=[
     {path:'messages',component: MessagesComponent},
     {path:'register',component: RegisterComponent},
     {path:'members',component: MemberListComponent,resolve:{users:MemberListResolver}},
-    {path:'member/edit',component: MemberEditComponent,resolve:{user:MemberEditResolver}},
+    {path:'member/edit',component: MemberEditComponent,resolve:{user:MemberEditResolver},
+          canDeactivate:[PreventUnsavedChandesGuard]},
     {path:'members/:id',component: MemberDetailsComponent,resolve:{users:MemberDetailResolver}},
     {path:'lists',component: ListComponent}
   ]

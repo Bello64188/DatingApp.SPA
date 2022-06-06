@@ -17,7 +17,8 @@ getUsers(): Observable<any>{
 }
 getUser(id:any): Observable<any>{
   return this.http.get(this.baseUrl+'user/'+ id);
-
-
+}
+updateUser(id:any, user:any):Observable<any>{
+  return this.http.put(this.baseUrl+'user/'+id,user);
 }
 }

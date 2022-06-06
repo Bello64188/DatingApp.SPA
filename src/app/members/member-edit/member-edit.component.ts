@@ -1,6 +1,9 @@
+import { NgForm } from '@angular/forms';
+import { AlertifyService } from './../../_service/alertify.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/_service/user.service';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-member-edit',
@@ -9,7 +12,9 @@ import { UserService } from 'src/app/_service/user.service';
 })
 export class MemberEditComponent implements OnInit {
 user:any
-  constructor(private route:ActivatedRoute, private userservice:UserService, private nroute:Router) { }
+@ViewChild('editForm') editForm : NgForm
+  constructor(private route:ActivatedRoute, private alertify:AlertifyService, private nroute:Router,
+    private userserve:UserService, private auth:AuthService) { }
 
   ngOnInit(): void {
  this.route.data.subscribe(data=>{
@@ -17,5 +22,13 @@ user:any
  });
 
   }
+updateUser(){
+  this.userserve.updateUser(this.auth.decodeToken.id, this.user).subscribe(next=>{
+    this.alertify.success(" User Profile Updated!");
+  this.editForm.reset(this.user);
+  },err=>{
+    this.alertify.error('Failed to Update');
+  });
 
+}
 }

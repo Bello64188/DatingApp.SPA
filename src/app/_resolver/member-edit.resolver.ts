@@ -16,18 +16,15 @@ import { UserService } from '../_service/user.service';
 })
 export class MemberEditResolver implements Resolve<User> {
   user:any
-  constructor(private userService:UserService,private route:Router,private alertify:AlertifyService, private jwthelper:AuthService){
-
-
+  constructor(private userService:UserService,private route:Router,private alertify:AlertifyService,
+     private jwthelper:AuthService){
      }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
     return this.userService.getUser(this.jwthelper.decodeToken.id).pipe(catchError(error=>{
       this.alertify.error('please you dont have access to this area. try and login.');
-
-
       this.route.navigate(['/members']);
       return of(null)
-    }))
+    }));
   }
 
 
