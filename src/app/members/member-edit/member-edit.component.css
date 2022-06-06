@@ -1,0 +1,15 @@
+.member-set, input, textarea ,.btn{
+  font-size: 18px;
+}
+.form-inline{
+  margin-top: 1em;
+}
+input,label{
+  margin-left: 0.5em;
+}
+.tab-panel{
+  margin-bottom: 1.2em;
+}
+.border{
+  padding: 1em;
+}

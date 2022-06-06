@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{{users.photoUrl}}" class="card-img" alt="{{users.knownAs}}">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h3 class="card-title"> {{users.name}}'s Profile</h3>
+              <div>
+                <strong class="card-text">Location</strong>
+                <p class="card-text">{{users.city}},{{users.country}}</p>
+              </div>
+              <div>
+                <strong class="card-text">Age</strong>
+                <p class="card-text">{{users.age}}</p>
+              </div>
+               <div>
+                <strong class="card-text">LastActive</strong>
+                <p class="card-text">{{users.lastActive|date}}</p>
+              </div>
+              <div>
+                <strong class="card-text">Member Since:</strong>
+                <p class="card-text">{{users.created |date}}</p>
+              </div>
+              <div class="card-footer bg-transparent border-success">
+                <div class="btn-group-justified">
+                  <div class="btn-group">
+                    <button class="btn btn-primary">Like</button>
+                  </div>
+                  <div class="btn-group ">
+                     <button class="btn btn-success">Message</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset>
+          <tab heading="About {{users?.knownAs}}" id="tab1">
+          <h4>Description</h4>
+          <p>{{users.introduction}}</p>
+          <h4>Looking For:</h4>
+          <p>{{users.lookingFor}}</p>
+          </tab>
+          <tab heading="Interests" >
+
+            <p>{{users.interests}}</p>
+            </tab>
+            <tab heading="Photos" >
+              <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+
+              </tab>
+              <tab heading="Messages">
+                <p>Message is here</p>
+                </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

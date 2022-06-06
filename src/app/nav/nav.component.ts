@@ -17,6 +17,7 @@ import { AlertifyService } from '../_service/alertify.service';
 
 export class NavComponent implements OnInit {
   public jwtHelper:JwtHelperService=new JwtHelperService();
+  userToken:any;
  decodeToken:any;
 model={
   Email:'',
@@ -24,33 +25,49 @@ model={
 };
 
 
-  constructor(private authservice:AuthService, private alertify:AlertifyService ) { }
+  constructor(public authservice:AuthService, private alertify:AlertifyService, private router:Router ) { }
 
   ngOnInit(): void {
 
   }
-login(form:NgForm){
-
-    return this.authservice.Login(form.value).subscribe((res:any)=>{
-      localStorage.setItem("token",res.token);
-      this.decodeToken= this.jwtHelper.decodeToken(res.token);
-      console.log(this.decodeToken);
-
+  Login(){
+    return this.authservice.login(this.model).subscribe(data=>{
       this.alertify.success("login successfully");
 
     },
     (err:any)=>{
-         this.alertify.error("Login Failed.");
+      this.alertify.error("Login Failed.");
+ },
+ ()=>{
+   this.router.navigate(['/members']);
+ }
+    )
+  }
+// login(form:NgForm){
 
+//     return this.authservice.Login(form.value).subscribe((res:any)=>{
+//       localStorage.setItem("token",res.token);
+//      this.decodeToken=this.jwtHelper.decodeToken(res.token);
+//      this.authservice.getActiveUser();
+//       this.userToken=res.token;
 
-    }
+//       this.alertify.success("login successfully");
 
-    );
+//     },
+//     (err:any)=>{
+//          this.alertify.error("Login Failed.");
+//     },
+//     ()=>{
+//       this.router.navigate(['/members']);
+//     }
 
-}
+//     );
+
+// }
 logout(){
   localStorage.removeItem("token");
   this.alertify.message("Logged out Successfully");
+  this.router.navigate(['/home']);
 
 
 }

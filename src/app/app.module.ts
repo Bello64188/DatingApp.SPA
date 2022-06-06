@@ -1,7 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
@@ -12,7 +12,19 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AlertifyService } from './_service/alertify.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { ListComponent } from './list/list.component';
+import { MessagesComponent } from './messages/messages.component';
+import { RouterModule } from '@angular/router';
+import { appRoute } from './route';
+import { AuthGuard } from './_guard/auth.guard';
+import { UserService } from './_service/user.service';
+import { HttpInterceptorService } from './service/http-interceptor.service';
+import { MembersCardComponent } from './members/members-card/members-card.component';
+import { MemberDetailsComponent } from './members/member-details/member-details.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +32,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ValueComponent,
     NavComponent,
       HomeComponent,
-      RegisterComponent
+      RegisterComponent,
+      MemberListComponent,
+      ListComponent,
+      MessagesComponent,
+      MembersCardComponent,
+      MemberDetailsComponent,
+      MemberEditComponent
    ],
   imports: [
     BrowserModule,
@@ -28,10 +46,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot()
+    NgxGalleryModule,
+    BsDropdownModule.forRoot(),
+    RouterModule.forRoot(appRoute),
+    TabsModule.forRoot()
   ],
   providers: [
-    AlertifyService
+    AlertifyService,
+    AuthGuard,
+    NavComponent,
+    UserService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:HttpInterceptorService,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

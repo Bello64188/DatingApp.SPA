@@ -1,0 +1,82 @@
+<div class="container ">
+  <div class="row">
+    <div class="col-sm-4">
+      <h1>Your Profile</h1>
+    </div>
+    <div class="col-sm-8">
+      <div class="alert alert-info" [hidden]="!editForm.dirty">
+         <p><strong>information:</strong> You have made a changes. Any unsave changes will be lost!!!</p>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{{user.photoUrl}}" class="card-img" alt="{{user.knownAs}}">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h3 class="card-title"> Your Profile</h3>
+              <div>
+                <strong class="card-text">Location</strong>
+                <p class="card-text">{{user.city}},{{user.country}}</p>
+              </div>
+              <div>
+                <strong class="card-text">Age</strong>
+                <p class="card-text">{{user.age}}</p>
+              </div>
+               <div>
+                <strong class="card-text">LastActive</strong>
+                <p class="card-text">{{user.lastActive|date}}</p>
+              </div>
+              <div>
+                <strong class="card-text">Member Since:</strong>
+                <p class="card-text">{{user.created |date}}</p>
+              </div>
+              <div class="card-footer bg-transparent border-success">
+                <div class="btn-group-justified">
+                  <div class="btn-group">
+                    <button class="btn btn-block btn-success" form="editForm" [disabled]="!editForm.dirty">Save Changes</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8 border" >
+      <div class="tab-panel">
+        <tabset class="member-set">
+          <tab heading="Edit Profile" id="tab1">
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+          <h4>Description</h4>
+         <textarea name="introduction" rows="6" class="form-control" [(ngModel)]="user.introduction"></textarea>
+          <h4>Looking For:</h4>
+          <textarea name="lookingFor" rows="4" class="form-control" [(ngModel)]="user.lookingFor"></textarea>
+          <h4>Interests:</h4>
+          <textarea name="interests" rows="2" class="form-control" [(ngModel)]="user.interests"></textarea>
+          <h4>Location Details :</h4>
+          <div  class="form-inline">
+            <label name="city">City :</label>
+            <input type="text" name="city" class="form-control" [(ngModel)]="user.city">
+            <label name="city">Country :</label>
+            <input type="text" name="country" class="form-control" [(ngModel)]="user.country">
+          </div>
+        </form>
+          </tab>
+            <tab heading=" Edit Photos" >
+             <p>edit photos goes here</p>
+
+              </tab>
+
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>
