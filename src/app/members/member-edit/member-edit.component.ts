@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class MemberEditComponent implements OnInit {
 user:any
+photoUrl : string;
 @ViewChild('editForm') editForm : NgForm
   constructor(private route:ActivatedRoute, private alertify:AlertifyService, private nroute:Router,
     private userserve:UserService, private auth:AuthService) { }
@@ -20,7 +21,7 @@ user:any
  this.route.data.subscribe(data=>{
    this.user=data['user']
  });
-
+ this.auth.currentPhotoUrl.subscribe(photoUrl=>this.photoUrl=photoUrl);
   }
 updateUser(){
   this.userserve.updateUser(this.auth.decodeToken.id, this.user).subscribe(next=>{
@@ -30,5 +31,8 @@ updateUser(){
     this.alertify.error('Failed to Update');
   });
 
+}
+updatePhotoUrl(photourl:any){
+this.user.photoUrl=photourl;
 }
 }
