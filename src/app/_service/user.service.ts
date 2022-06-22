@@ -21,4 +21,10 @@ getUser(id:any): Observable<any>{
 updateUser(id:any, user:any):Observable<any>{
   return this.http.put(this.baseUrl+'user/'+id,user);
 }
+setMainPhoto(userid:any,id:any):Observable<any>{
+  return this.http.post(this.baseUrl +'user/'+ userid +'/photo/' + id +'/setMain',{});
+}
+deletePhoto(userid:any,id:any):Observable<any>{
+  return this.http.delete(this.baseUrl + 'user/' + userid + '/photo/' + id);
+}
 }

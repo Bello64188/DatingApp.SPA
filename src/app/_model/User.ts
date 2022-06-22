@@ -2,7 +2,8 @@ import { Photo } from "./Photo";
 
 export interface User {
   id:any;
-  Email:string;
+  Email:any;
+  Password:any;
   name:string;
   phoneNumber:string;
   gender:string;

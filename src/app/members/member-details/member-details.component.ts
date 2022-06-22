@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/auth.service';
 import { User } from './../../_model/User';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -14,7 +15,8 @@ export class MemberDetailsComponent implements OnInit {
 users:any;
 galleryOptions: NgxGalleryOptions[];
 galleryImages: NgxGalleryImage[];
-  constructor(private userserv:UserService,private alertify:AlertifyService, private route:ActivatedRoute) { }
+photoUrl: string;
+  constructor(private authserv:AuthService,private alertify:AlertifyService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
    this.route.data.subscribe(data=>{
@@ -33,7 +35,7 @@ galleryImages: NgxGalleryImage[];
     }
   ];
   this.galleryImages=this.getImage();
-
+this.authserv.currentPhotoUrl.subscribe(photoUrl=>this.photoUrl=photoUrl);
 }
 getImage(){
   const imageUrls =[]

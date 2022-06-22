@@ -16,7 +16,7 @@
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="{{user.photoUrl}}" class="card-img" alt="{{user.knownAs}}">
+            <img src="{{photoUrl}}" class="card-img" alt="{{user.knownAs}}">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -71,8 +71,7 @@
         </form>
           </tab>
             <tab heading=" Edit Photos" >
-             <p>edit photos goes here</p>
-
+            <app-photo-edit [photos]="user.photos" (getMemberPhoto)="updatePhotoUrl($event)" ></app-photo-edit>
               </tab>
 
         </tabset>

@@ -21,10 +21,12 @@ import { RouterModule } from '@angular/router';
 import { appRoute } from './route';
 import { AuthGuard } from './_guard/auth.guard';
 import { UserService } from './_service/user.service';
-import { HttpInterceptorService } from './service/http-interceptor.service';
 import { MembersCardComponent } from './members/members-card/members-card.component';
 import { MemberDetailsComponent } from './members/member-details/member-details.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { PhotoEditComponent } from './members/photo-edit/photo-edit.component';
+import { FileDropDirective, FileSelectDirective, FileUploader, FileUploadModule } from 'ng2-file-upload';
+import { HttpInterceptorService } from './service/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
       MessagesComponent,
       MembersCardComponent,
       MemberDetailsComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      PhotoEditComponent
    ],
   imports: [
     BrowserModule,
@@ -49,7 +52,9 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
     NgxGalleryModule,
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoute),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    FileUploadModule
+
   ],
   providers: [
     AlertifyService,
@@ -58,7 +63,7 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
     UserService,
     {
       provide:HTTP_INTERCEPTORS,
-      useClass:HttpInterceptorService,
+      useClass: HttpInterceptorService,
       multi:true
     }
   ],
