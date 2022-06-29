@@ -1,5 +1,5 @@
 <div class="card" style="width: 18rem;">
-  <img src="{{user.photoUrl}}" class="card-img-top" alt="{{user.knownAs}}">
+  <img src="{{user.photoUrl? user.photoUrl: '../../../../../assets/user.png'}}" class="card-img-top" alt="{{user.knownAs}}">
   <ul class="list-inline member-icons animate text-center">
     <li><button class="btn btn-primary" [routerLink]="['/members/',user.id]"><i class="fa fa-user" aria-hidden="true"></i></button></li>
     <li><button class="btn btn-primary"><i class="fa fa-heart"></i></button></li>

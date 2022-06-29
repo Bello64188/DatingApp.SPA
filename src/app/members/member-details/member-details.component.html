@@ -4,7 +4,7 @@
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="{{photoUrl}}" class="card-img" alt="{{users.knownAs}}">
+            <img src="{{users.photoUrl? users.photoUrl:'../../../../../assets/user.png'}}" class="card-img" alt="{{users.knownAs}}">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -19,11 +19,11 @@
               </div>
                <div>
                 <strong class="card-text">LastActive</strong>
-                <p class="card-text">{{users.lastActive|date}}</p>
+                <p class="card-text">{{users.lastActive| timeago:live}}</p>
               </div>
               <div>
                 <strong class="card-text">Member Since:</strong>
-                <p class="card-text">{{users.created |date}}</p>
+                <p class="card-text">{{users.created |date: "mediumDate"}}</p>
               </div>
               <div class="card-footer bg-transparent border-success">
                 <div class="btn-group-justified">

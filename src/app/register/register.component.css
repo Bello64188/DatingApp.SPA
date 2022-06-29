@@ -5,4 +5,39 @@ font-size: 18px;
 }
 input{
   font-size: 12px;
+  width:100%;
+}
+.registerform{
+  text-align: center;
+}
+.register {
+ margin-top: 2em;
+ width:50%;
+  box-sizing: border-box;
+
+  margin-bottom: 0;
+}
+.text-danger{
+  font-size: small;
+}
+hr{
+   width: 100%;
+}
+.genderForm{
+  float: left;
+}
+.group::after{
+content: '';
+clear: both;
+display: table;
+}
+.radio-inline input[type="radio"]{
+  margin-left: -3.9em !important;
+}
+.container{
+  margin-right: auto !important;
+  margin-left: auto !important;
+  max-width: 60%;
+  justify-content: center;
+  display: flex;
 }

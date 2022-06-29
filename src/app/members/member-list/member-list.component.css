@@ -1,1 +1,29 @@
 
+.text-center{
+  display: flex;
+  justify-content: space-around;
+}
+form{
+  display: flex !important;
+  justify-content: flex-start;
+}
+button[type="submit"],button[type="button"]{
+  margin-right: 0.5em;
+  margin-left: 0.1em;
+  font-size: 15px;
+}
+.form-inline .form-control {
+  display: inline-block;
+  width: 9em;
+  vertical-align: middle;
+  margin-left: 0.4em;
+  margin-right: 0.2em;
+
+}
+.form-control{
+  font-size: 15px;
+  font-weight: 500;
+}
+label {
+  font-size: small;
+}

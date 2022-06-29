@@ -32,6 +32,7 @@
               "src/assets/vendors/iconfonts/alertifyjs/build/css/alertify.min.css",
               "src/assets/vendors/iconfonts/alertifyjs/build/css/themes/bootstrap.min.css",
               "src/assets/vendors/iconfonts/bootswatch/dist/united/bootstrap.min.css",
+              "src/assets/vendors/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.css"
 
             ],

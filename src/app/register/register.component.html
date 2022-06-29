@@ -1,19 +1,93 @@
-<form #user="ngForm" (submit)="register(user)">
+<div class="container">
+<form [formGroup]="registerForm" (submit)="register()">
   <h1 class="text-center">Sign Up</h1>
+
+
+<hr>
+<div class="form-group ">
+  <label for="" class="control-label" style="margin-right: 10px;">I am a:</label>
+
+    <label for="male" class=" radio-inline">
+    <input type="radio" value="male"  id="male" formControlName="gender" class="mr-3">Male
+  </label>
+
+  <label for="female" class="radio-inline ml-3">
+    <input type="radio" value="female" id="female" formControlName="gender" class="mr-3">Female
+  </label>
+</div>
+  <div class="form-group" >
+     <input type="email" class="form-control "  placeholder="Email" formControlName="email" >
+    <span class="text-danger"
+      *ngIf="(registerFormControl['email'].touched || submitted) && registerFormControl['email'].errors?.['required']"> Email is Required.</span>
+      <span class="text-danger"
+      *ngIf="(registerFormControl['email'].touched || submitted) && registerFormControl['email'].errors?.['email']"> Enter a valid Email.</span>
+  </div>
+
+    <div class="form-group">
+       <input type="password" class="form-control"  placeholder="Password" formControlName="password" >
+       <span class="text-danger help-block"
+       *ngIf="(registerFormControl['password'].touched || submitted) && registerFormControl['password'].errors?.['required']"> Password is Required.</span>
+       <span class="text-danger help-block"
+       *ngIf="(registerFormControl['password'].touched) && registerFormControl['password'].errors?.['minlength']"> Password is Required Atleast 4 characters.</span>
+       <span class="text-danger help-block"
+       *ngIf="(registerFormControl['password'].touched) && registerFormControl['password'].errors?.['invalidPassword']"> Password should have 8 characters, 1 uppercase,1 lowercase,1 number and 1 special character.</span>
+   </div>
+
+   <div class="form-group">
+    <input type="password" class="form-control"  placeholder="Confirm Password" formControlName="confirmPassword" >
+    <span class="text-danger help-block"
+    *ngIf="(registerFormControl['confirmPassword'].touched || submitted) && registerFormControl['confirmPassword'].errors?.['required']">Confirm Password is Required.</span>
+    <span class="text-danger help-block"
+    *ngIf="(registerFormControl['confirmPassword'].touched ) && registerForm.errors?.['mismatch']">Confirm Password must match.</span>
+   </div>
+   <div class="form-group">
+     <input type="text" class="form-control"  placeholder=" Name" formControlName ="name" >
+     <span class="text-danger help-block"
+    *ngIf="(registerFormControl['name'].touched || submitted) && registerFormControl['name'].errors?.['required']">First Name is Required.</span>
+   </div>
+   <!-- <div class="form-group">
+     <input type="text" class="form-control"  placeholder=" LastName" formControlName="lastName"  >
+     <span class="text-danger help-block"
+    *ngIf="(registerFormControl['lastName'].touched || submitted) && registerFormControl['lastName'].errors?.['required']">Last Name is Required.</span>
+   </div> -->
+
+   <div class="form-group">
+    <input type="text" class="form-control"  placeholder=" knownAs" formControlName="knownAs"  >
+    <span class="text-danger help-block"
+   *ngIf="(registerFormControl['knownAs'].touched || submitted) && registerFormControl['knownAs'].errors?.['required']">known As is Required.</span>
+  </div>
+
   <div class="form-group">
+    <input type="text" class="form-control"  bsDatepicker [bsConfig]="Bsconfig" placeholder=" Date Of Birth" formControlName="dateOfBirth"  >
+    <span class="text-danger help-block"
+   *ngIf="(registerFormControl['dateOfBirth'].touched || submitted) && registerFormControl['dateOfBirth'].errors?.['required']">Date of Birth is Required.</span>
+  </div>
 
-    <input type="email" class="form-control " name="Email" placeholder="Enter email" [(ngModel)]="User.Email"><br>
+  <div class="form-group">
+    <input type="text" class="form-control"  placeholder=" City" formControlName="city"  >
+    <span class="text-danger help-block"
+   *ngIf="(registerFormControl['city'].touched || submitted) && registerFormControl['city'].errors?.['required']">City is Required.</span>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control"  placeholder=" Country" formControlName="country"  >
+    <span class="text-danger help-block"
+   *ngIf="(registerFormControl['country'].touched || submitted) && registerFormControl['country'].errors?.['required']">Country is Required.</span>
+  </div>
+   <div class="form-group">
+     <input type="text" class="form-control"  placeholder=" Phone Number" formControlName="phoneNumber">
+     <span class="text-danger help-block"
+    *ngIf="(registerFormControl['phoneNumber'].touched || submitted) && registerFormControl['phoneNumber'].errors?.['required']">Phone Number is Required.</span>
+   </div>
 
-    <input type="password" class="form-control" name="Password" placeholder="Enter password" [(ngModel)]="User.Password"><br>
-    <input type="text" class="form-control" name="FirstName" placeholder="Enter FirstName" [(ngModel)]="User.FirstName" ><br>
-    <input type="text" class="form-control" name="LastName" placeholder="Enter LastName" [(ngModel)]="User.LastName"><br>
-    <input type="text" class="form-control" name="PhoneNumber" placeholder="Enter PhoneNumber" [(ngModel)]="User.PhoneNumber"><br>
      <!-- <select name="Roles" class="form-control" [(ngModel)]="User.Roles">
       <option [(ngModel)]="User.Roles" >User</option>
       <option [(ngModel)]="User.Roles" >Administrator</option>
     </select> -->
-  </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
+ <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Submit</button>
   <button type="submit"(click)="cancel()"  class="btn btn-danger">Cancel</button>
+
+
+
 </form>
+
+</div>
