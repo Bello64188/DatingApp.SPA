@@ -13,9 +13,11 @@ import { UserService } from '../_service/user.service';
   providedIn: 'root'
 })
 export class MemberListResolver implements Resolve<any[]> {
+  pageNumber=1;
+  pageSize=5;
   constructor(private userService:UserService, private route:Router,private alertify:AlertifyService){}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    return this.userService.getUsers().pipe(catchError(error=>{
+    return this.userService.getUsers(this.pageNumber, this.pageSize,null).pipe(catchError(error=>{
       this.alertify.error('Unable to access this page. please try and login.');
       this.route.navigate(['/home']);
       return of(null);

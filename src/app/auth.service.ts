@@ -24,7 +24,7 @@ constructor( private http:HttpClient) {
     this.photoUrl.next(photoUrl);
    }
 
-   login(model: any){
+   login(model:any){
        return this.http.post(this.baseUrl + 'login',model).pipe(
          map((response:any)=>{
            const user = response;
@@ -33,10 +33,12 @@ constructor( private http:HttpClient) {
              localStorage.setItem('userfrom',JSON.stringify(user.userfrom));
              this.decodeToken=this.jwtHelper.decodeToken(user.token);
              this.currentUser=user.userfrom;
-             this.changeMemberPhoto(this.currentUser.photoUrl);
-            //  console.log(user.token);
-            //  //the entire response
-            //  console.log(user);
+             if(this.currentUser.photoUrl!==null){
+               this.changeMemberPhoto(this.currentUser.photoUrl);
+             }
+             else{
+              this.changeMemberPhoto('../assets/user.png');
+             }
 
 
          }
@@ -45,7 +47,7 @@ constructor( private http:HttpClient) {
    }
 
 
-   Register(UserData:any){
+   Register(UserData:User){
      return this.http.post(this.baseUrl + 'register',UserData)
      .pipe(retry(1),catchError(this.handleError));
    }

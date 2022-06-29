@@ -14,6 +14,7 @@ export class MemberEditComponent implements OnInit {
 user:any
 photoUrl : string;
 @ViewChild('editForm') editForm : NgForm
+live:boolean=false;
   constructor(private route:ActivatedRoute, private alertify:AlertifyService, private nroute:Router,
     private userserve:UserService, private auth:AuthService) { }
 

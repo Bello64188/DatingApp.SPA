@@ -16,6 +16,7 @@ users:any;
 galleryOptions: NgxGalleryOptions[];
 galleryImages: NgxGalleryImage[];
 photoUrl: string;
+live:boolean=false;
   constructor(private authserv:AuthService,private alertify:AlertifyService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -35,7 +36,10 @@ photoUrl: string;
     }
   ];
   this.galleryImages=this.getImage();
-this.authserv.currentPhotoUrl.subscribe(photoUrl=>this.photoUrl=photoUrl);
+
+     this.authserv.currentPhotoUrl.subscribe(photoUrl=>this.photoUrl=photoUrl);
+
+
 }
 getImage(){
   const imageUrls =[]
