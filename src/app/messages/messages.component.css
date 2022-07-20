@@ -1,0 +1,10 @@
+.btn-group {
+  display: inline-block;
+}
+.rounded-circle {
+width:85px;
+}
+.text-center{
+  display: flex;
+  justify-content: space-around;
+}
