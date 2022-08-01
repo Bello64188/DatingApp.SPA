@@ -9,7 +9,6 @@ import { AlertifyService } from '../_service/alertify.service';
 
 
 
-
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
