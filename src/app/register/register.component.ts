@@ -52,15 +52,15 @@ Bsconfig: Partial<BsDatepickerConfig>
   get registerFormControl(){
     return this.registerForm.controls;
   }
-register(){
-this.submitted=true;
+  register(){
+  this.submitted=true;
   if(this.registerForm.valid){
     this.user = Object.assign({}, this.registerForm.value)
     this.authservice.Register(this.user).subscribe(()=>{
     this.alertify.success("Registered Successfully...");
-   },
-   (error:any)=>{
-     this.alertify.error("Registration Failed.");
+    },
+    (error:any)=>{
+      this.alertify.error("Registration Failed.");
 
   },()=>{
     this.authservice.login(this.user).subscribe(()=>{
@@ -68,13 +68,10 @@ this.submitted=true;
       this.alertify.message('Welcome to memeber page');
     })
   }
-   )
+    )
 
   }
-
-
-
-}
+  }
 cancel(){
  this.submitted=false;
 this.cancelRegister.emit(false);
